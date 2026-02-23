@@ -37,66 +37,74 @@
         
     </header>
     <hr class="w-full text-gray-400">
-    <main class="w-[80%] mx-auto py-10 ">
+    <main id="mainContainer" class="w-[80%] mx-auto py-10 ">
      <section>
          <div class="flex justify-between pb-6 ">
           <div><h4 class="text-2xl font-bold ">Available Jobs</h4></div>
-          <p><span>0</span> Jobs</p>
+          <p><span id="count-jobs">0</span> Jobs</p>
       </div>
       <div class="flex gap-4 mb-6">
-        <button onclick="toggleStyle('all-btn')" id="all-btn" class="btn border-blue-700 bg-blue-500 text-base-100 w-28">All</button>
-        <button onclick="toggleStyle('interview-btn')" id="interview-btn" class="btn   border-blue-700 w-28">Interview</button>
-        <button onclick="toggleStyle('rejected-btn')" id="rejected-btn" class="btn   border-blue-700 w-28">Rejected</button> 
+        <button onclick="toggleStyle('all-filter-btn')" id="all-filter-btn" class="btn border-blue-700 bg-blue-500 text-base-100 w-28">All</button>
+        <button onclick="toggleStyle('interview-filter-btn')" id="interview-filter-btn" class="btn   border-blue-700 w-28">Interview</button>
+        <button onclick="toggleStyle('rejected-filter-btn')" id="rejected-filter-btn" class="btn   border-blue-700 w-28">Rejected</button> 
       </div>
      </section>
-      <section id="allCards">
+
+      <section id="filltered-section" class="hidden">
+
+      </section>
+      <section id="allCards" class="space-y-4">
         <!-- card 1 -->
-        <div class="  bg-base-100 p-8 rounded-lg mb-4 border-1 border-gray-200 md:flex justify-between">
-         <div class="space-y-4">
+        <div class="  bg-base-100 p-8 rounded-lg mb-4 border-1 border-gray-200  md:flex">
+          <div class="space-y-6">
            <div>
-             <h4 class="text-xl font-semibold">Mobile First Corp</h4>
-             <h4 class="text-gray-400">React Native Developer </h4>
+             <h4 class="company text-xl font-semibold">Mobile First Corp</h4>
+             <h4 class="post text-gray-400">React Native Developer </h4>
            </div>
            <div class="flex gap-3 text-center text-gray-400 ">
-             <p>Remote</p>
+             <p class="job">Remote</p>
              <p> • </i></p>
-             <p>Full-time</p>
+             <p class="period">Full-time</p>
              <p> • </p>
-             <p>$13000-$175000</p>
+             <p class="salary">$13000-$175000</p>
            </div>
            <div>
-             <h4 class="bg-violet-100 w-fit p-3 mb-2 text-center rounded-md ">NOT APPLIED</h4>
-             <p class="text-gray-600">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+             <h4 class="state bg-violet-100 w-fit p-3 mb-2 text-center rounded-md ">NOT APPLIED</h4>
+             <p class="bio text-gray-600">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
            </div>
            <div class="flex gap-3">
-            <button class="btn btn-success btn-soft border-1 border-green-400 rounded-lg py-1 px-4 w-fit">Interview</button>
-            <button class="btn  text-red-600 bg-red-100 border-1 border-red-400 rounded-lg py-1 px-4 w-fit hover:bg-red-600 hover:text-white">Rejected</button>
+            <button class="interview-btn btn btn-success btn-soft border-1 border-green-400 rounded-lg py-1 px-4 w-fit">Interview</button>
+            <button class="reject-btn btn  text-red-600 bg-red-100 border-1 border-red-400 rounded-lg py-1 px-4 w-fit hover:bg-red-600 hover:text-white">Rejected</button>
            </div>
-         </div>
-          <div><button class="border-1 border-gray-300 p-3 rounded-full mt-3 " ><i class="fa-solid fa-trash-can text-gray-400"></i></button></div>
+        
+        </div>
+         <div><button onclick="delete('delete-btn')" id="delete-btn" class=" border-1 border-gray-300 p-3 rounded-full mt-3 "  ><i class="fa-solid fa-trash-can text-gray-400"></i></button></div>
+        </div>
+        
+         
          
       </div>
       <!-- card 2 -->
         <div class=" justify-between bg-base-100 p-8 rounded-lg mb-4 border-1 border-gray-200 md:flex">
          <div class="space-y-4">
            <div>
-             <h4 class="text-xl font-semibold">WebFlow Agency</h4>
-             <h4 class="text-gray-400">Web Designer & Developer </h4>
+             <h4 class="company text-xl font-semibold">WebFlow Agency</h4>
+             <h4 class="post text-gray-400">Web Designer & Developer </h4>
            </div>
            <div class="flex gap-3 text-center text-gray-400 ">
-             <p>Los Angeles, CA</p>
+             <p class="job">Los Angeles, CA</p>
              <p> • </i></p>
-             <p>Part-time</p>
+             <p class="period">Part-time</p>
              <p> • </p>
-             <p> $80,000 - $120,000</p>
+             <p class="salary"> $80,000 - $120,000</p>
            </div>
            <div>
-             <h4 class="bg-violet-100 w-fit p-3 mb-2 text-center rounded-md ">NOT APPLIED</h4>
-             <p class="text-gray-600">Create stunning web experiences for high-profile clients. Must have portfolio and experience with modern web design trends.</p>
+             <h4 class="state bg-violet-100 w-fit p-3 mb-2 text-center rounded-md ">NOT APPLIED</h4>
+             <p class="bio text-gray-600">Create stunning web experiences for high-profile clients. Must have portfolio and experience with modern web design trends.</p>
            </div>
            <div class="flex gap-3">
-            <button class="btn btn-success btn-soft border-1 border-green-400 rounded-lg py-1 px-4 w-fit">Interview</button>
-            <button class="btn  text-red-600 bg-red-100 border-1 border-red-400 rounded-lg py-1 px-4 w-fit hover:bg-red-600 hover:text-white">Rejected</button>
+            <button class="interview-btn btn btn-success btn-soft border-1 border-green-400 rounded-lg py-1 px-4 w-fit">Interview</button>
+            <button class="reject-btn btn  text-red-600 bg-red-100 border-1 border-red-400 rounded-lg py-1 px-4 w-fit hover:bg-red-600 hover:text-white">Rejected</button>
            </div>
          </div>
           <div><button class="border-1 border-gray-300 p-3 rounded-full mt-3 " ><i class="fa-solid fa-trash-can text-gray-400"></i></button></div>
