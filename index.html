@@ -1,144 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>job Tracker</title>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>job Tracker</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+  <style>
     body {
-        font-family: 'Geist', sans-serif;
+      font-family: 'Geist', sans-serif;
     }
-</style>
+
+    .delete-btn {
+      cursor: pointer;
+    }
+  </style>
 </head>
+
 <body class="bg-gray-100">
-    <header class="w-[80%] mx-auto pt-10 ">
-        <h2 class="text-3xl font-bold">Job Application Tracker</h2>
-       <div class="flex gap-5 my-5 " >
-         <div class=" bg-base-100 p-4 rounded-lg border-1 border-gray-200  w-1/3 text-left ">
-            <p>Total</p>
-            <h4 id="total-count" class="text-2xl font-bold">0</h4>
+  <header class="w-[80%] mx-auto pt-10 ">
+    <h2 class="text-3xl font-bold">Job Application Tracker</h2>
+    <div class="flex gap-5 my-5 ">
+      <div class=" bg-base-100 p-4 rounded-lg border-1 border-gray-200  w-1/3 text-left ">
+        <p>Total</p>
+        <h4 id="total-count" class="text-2xl font-bold">0</h4>
+      </div>
+      <div class="bg-base-100 p-4 rounded-lg w-1/3 border-1 border-gray-200 ">
+        <p>Interview</p>
+        <h4 id="interview-count" class="text-2xl font-bold text-green-500">0</h4>
+      </div>
+      <div class="bg-base-100 p-4 rounded-lg w-1/3 border-1 border-gray-200">
+        <p>Reject</p>
+        <h4 id="rejected-count" class="text-2xl font-bold text-red-500">0</h4>
+      </div>
+    </div>
+
+  </header>
+  <hr class="w-full text-gray-400">
+  <main id="mainContainer" class="w-[80%] mx-auto py-10 ">
+    <section>
+      <div class="flex justify-between pb-6 ">
+        <div>
+          <h4 class="text-2xl font-bold ">Available Jobs</h4>
         </div>
-         <div class="bg-base-100 p-4 rounded-lg w-1/3 border-1 border-gray-200 ">
-            <p>Interview</p>
-            <h4 id="interview-count" class="text-2xl font-bold text-green-500">0</h4>
-        </div>
-         <div class="bg-base-100 p-4 rounded-lg w-1/3 border-1 border-gray-200">
-            <p>Rejected</p>
-            <h4 id="rejected-count" class="text-2xl font-bold text-red-500">0</h4>
-        </div>
-       </div>   
-        
-    </header>
-    <hr class="w-full text-gray-400">
-    <main id="mainContainer" class="w-[80%] mx-auto py-10 ">
-     <section>
-         <div class="flex justify-between pb-6 ">
-          <div><h4 class="text-2xl font-bold ">Available Jobs</h4></div>
-          <p><span id="count-jobs">0</span> Jobs</p>
+        <p><span id="count-jobs">0</span> Jobs</p>
       </div>
       <div class="flex gap-4 mb-6">
-        <button onclick="toggleStyle('all-filter-btn')" id="all-filter-btn" class="btn border-blue-700 bg-blue-500 text-base-100 w-28">All</button>
-        <button onclick="toggleStyle('interview-filter-btn')" id="interview-filter-btn" class="btn   border-blue-700 w-28">Interview</button>
-        <button onclick="toggleStyle('rejected-filter-btn')" id="rejected-filter-btn" class="btn   border-blue-700 w-28">Rejected</button> 
+        <button onclick="toggleStyle('all-filter-btn')" id="all-filter-btn"
+          class="btn border-blue-700 bg-blue-500 text-base-100 w-28">All</button>
+        <button onclick="toggleStyle('interview-filter-btn')" id="interview-filter-btn"
+          class="btn   border-blue-700 w-28">Interview</button>
+        <button onclick="toggleStyle('rejected-filter-btn')" id="rejected-filter-btn"
+          class="btn   border-blue-700 w-28">Rejected</button>
       </div>
-     </section>
+    </section>
 
-      <section id="filltered-section" class="hidden">
+    <section id="filltered-section" class="hidden">
 
-      </section>
-      <section id="allCards" class="space-y-4">
-        <!-- card 1 -->
-        <div class="  bg-base-100 p-8 rounded-lg mb-4 border-1 border-gray-200  md:flex">
-          <div class="space-y-6">
-           <div>
-             <h4 class="company text-xl font-semibold">Mobile First Corp</h4>
-             <h4 class="post text-gray-400">React Native Developer </h4>
-           </div>
-           <div class="flex gap-3 text-center text-gray-400 ">
-             <p class="job">Remote</p>
-             <p> • </i></p>
-             <p class="period">Full-time</p>
-             <p> • </p>
-             <p class="salary">$13000-$175000</p>
-           </div>
-           <div>
-             <h4 class="state bg-violet-100 w-fit p-3 mb-2 text-center rounded-md ">NOT APPLIED</h4>
-             <p class="bio text-gray-600">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
-           </div>
-           <div class="flex gap-3">
-            <button class="interview-btn btn btn-success btn-soft border-1 border-green-400 rounded-lg py-1 px-4 w-fit">Interview</button>
-            <button class="reject-btn btn  text-red-600 bg-red-100 border-1 border-red-400 rounded-lg py-1 px-4 w-fit hover:bg-red-600 hover:text-white">Rejected</button>
-           </div>
-        
+    </section>
+    <section id="allCards" class="space-y-4">
+      <!-- card 1 -->
+      <div class=" justify-between bg-base-100 p-8 rounded-lg mb-4 border-1 border-gray-200 md:flex">
+        <div class="space-y-4">
+          <div>
+            <h4 class="company text-xl font-semibold">Mobile First Corp</h4>
+            <h4 class="post text-gray-400">React Native Developer </h4>
+          </div>
+          <div class="flex gap-3 text-center text-gray-400 ">
+            <p class="job">Remote</p>
+            <p> • </i></p>
+            <p class="period">Full-time</p>
+            <p> • </p>
+            <p class="salary">$13000-$175000</p>
+          </div>
+          <div>
+            <h4 class="state bg-violet-100 w-fit p-3 mb-2 text-center rounded-md ">NOT APPLIED</h4>
+            <p class="bio text-gray-600">Build cross-platform mobile applications using React Native. Work on products
+              used by millions of users worldwide.</p>
+          </div>
+          <div class="flex gap-3">
+            <button
+              class="interview-btn btn btn-success btn-soft border-1 border-green-400 rounded-lg py-1 px-4 w-fit">Interview</button>
+            <button
+              class="reject-btn btn  text-red-600 bg-red-100 border-1 border-red-400 rounded-lg py-1 px-4 w-fit hover:bg-red-600 hover:text-white">Reject</button>
+          </div>
+
         </div>
-         <div><button onclick="delete('delete-btn')" id="delete-btn" class=" border-1 border-gray-300 p-3 rounded-full mt-3 "  ><i class="fa-solid fa-trash-can text-gray-400"></i></button></div>
-        </div>
-        
-         
-         
+        <div><button id="first-job" class="delete-btn border-1 border-gray-300 p-3 rounded-full mt-3 "><i
+              class="fa-solid fa-trash-can text-gray-400"></i></button></div>
       </div>
+
       <!-- card 2 -->
-        <div class=" justify-between bg-base-100 p-8 rounded-lg mb-4 border-1 border-gray-200 md:flex">
-         <div class="space-y-4">
-           <div>
-             <h4 class="company text-xl font-semibold">WebFlow Agency</h4>
-             <h4 class="post text-gray-400">Web Designer & Developer </h4>
-           </div>
-           <div class="flex gap-3 text-center text-gray-400 ">
-             <p class="job">Los Angeles, CA</p>
-             <p> • </i></p>
-             <p class="period">Part-time</p>
-             <p> • </p>
-             <p class="salary"> $80,000 - $120,000</p>
-           </div>
-           <div>
-             <h4 class="state bg-violet-100 w-fit p-3 mb-2 text-center rounded-md ">NOT APPLIED</h4>
-             <p class="bio text-gray-600">Create stunning web experiences for high-profile clients. Must have portfolio and experience with modern web design trends.</p>
-           </div>
-           <div class="flex gap-3">
-            <button class="interview-btn btn btn-success btn-soft border-1 border-green-400 rounded-lg py-1 px-4 w-fit">Interview</button>
-            <button class="reject-btn btn  text-red-600 bg-red-100 border-1 border-red-400 rounded-lg py-1 px-4 w-fit hover:bg-red-600 hover:text-white">Rejected</button>
-           </div>
-         </div>
-          <div><button class="border-1 border-gray-300 p-3 rounded-full mt-3 " ><i class="fa-solid fa-trash-can text-gray-400"></i></button></div>
-         
+      <div class=" justify-between bg-base-100 p-8 rounded-lg mb-4 border-1 border-gray-200 md:flex">
+        <div class="space-y-4">
+          <div>
+            <h4 class="company text-xl font-semibold">WebFlow Agency</h4>
+            <h4 class="post text-gray-400">Web Designer & Developer </h4>
+          </div>
+          <div class="flex gap-3 text-center text-gray-400 ">
+            <p class="job">Los Angeles, CA</p>
+            <p> • </i></p>
+            <p class="period">Part-time</p>
+            <p> • </p>
+            <p class="salary"> $80,000 - $120,000</p>
+          </div>
+          <div>
+            <h4 class="state bg-violet-100 w-fit p-3 mb-2 text-center rounded-md ">NOT APPLIED</h4>
+            <p class="bio text-gray-600">Create stunning web experiences for high-profile clients. Must have portfolio
+              and experience with modern web design trends.</p>
+          </div>
+          <div class="flex gap-3">
+            <button
+              class="interview-btn btn btn-success btn-soft border-1 border-green-400 rounded-lg py-1 px-4 w-fit">Interview</button>
+            <button
+              class="reject-btn btn  text-red-600 bg-red-100 border-1 border-red-400 rounded-lg py-1 px-4 w-fit hover:bg-red-600 hover:text-white">Reject</button>
+          </div>
+        </div>
+        <div><button onClick="deleteJobs('second-job')" id="second-job"
+            class="delete-btn border-1 border-gray-300 p-3 rounded-full mt-3 "><i
+              class="fa-solid fa-trash-can text-gray-400"></i></button></div>
+
       </div>
       <!-- card 3 -->
-        <div class=" justify-between bg-base-100 p-8 rounded-lg mb-4 border-1 border-gray-200 md:flex">
-         <div class="space-y-4">
-           <div>
-             <h4 class="text-xl font-semibold">DataViz Solutions</h4>
-             <h4 class="text-gray-400">Data Visualization Specialist </h4>
-           </div>
-           <div class="flex gap-3 text-center text-gray-400 ">
-             <p>Boston, MA</p>
-             <p> • </i></p>
-             <p>Full-time</p>
-             <p> • </p>
-             <p> $125,000 - $165,000</p>
-           </div>
-           <div>
-             <h4 class="bg-violet-100 w-fit p-3 mb-2 text-center rounded-md ">NOT APPLIED</h4>
-             <p class="text-gray-600">Transform complex data into compelling visualizations. Required skills: D3.js, React, and strong analytical thinking.</p>
-           </div>
-           <div class="flex gap-3">
-            <button class="btn btn-success btn-soft border-1 border-green-400 rounded-lg py-1 px-4 w-fit">Interview</button>
-            <button class="btn  text-red-600 bg-red-100 border-1 border-red-400 rounded-lg py-1 px-4 w-fit hover:bg-red-600 hover:text-white">Rejected</button>
-           </div>
-         </div>
-          <div><button class="border-1 border-gray-300 p-3 rounded-full mt-3 " ><i class="fa-solid fa-trash-can text-gray-400"></i></button></div>
-         
+      <div class=" justify-between bg-base-100 p-8 rounded-lg mb-4 border-1 border-gray-200 md:flex">
+        <div class="space-y-4">
+          <div>
+            <h4 class="company text-xl font-semibold">DataViz Solutions</h4>
+            <h4 class="post text-gray-400">Data Visualization Specialist </h4>
+          </div>
+          <div class="flex gap-3 text-center text-gray-400 ">
+            <p class="job">Boston, MA</p>
+            <p> • </i></p>
+            <p class="period">Full-time</p>
+            <p> • </p>
+            <p class="salary"> $125,000 - $165,000</p>
+          </div>
+          <div>
+            <h4 class="state bg-violet-100 w-fit p-3 mb-2 text-center rounded-md ">NOT APPLIED</h4>
+            <p class="bio text-gray-600">Transform complex data into compelling visualizations. Required skills: D3.js,
+              React, and strong analytical thinking.</p>
+          </div>
+          <div class="flex gap-3">
+            <button
+              class="interview-btn btn btn-success btn-soft border-1 border-green-400 rounded-lg py-1 px-4 w-fit">Interview</button>
+            <button
+              class="reject-btn btn  text-red-600 bg-red-100 border-1 border-red-400 rounded-lg py-1 px-4 w-fit hover:bg-red-600 hover:text-white">Reject</button>
+          </div>
+        </div>
+        <div><button onClick="deleteJobs('third-job')" id="third-job"
+            class="delete-btn border-1 border-gray-300 p-3 rounded-full mt-3 "><i
+              class="fa-solid fa-trash-can text-gray-400"></i></button></div>
+
       </div>
-      </section>
-      
-    </main>
-    <script src="script/script.js"></script>
+    </section>
+
+  </main>
+  <script src="script/script.js"></script>
 </body>
+
 </html>
